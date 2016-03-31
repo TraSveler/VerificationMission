@@ -205,7 +205,7 @@ var ssb = {
 
       var xhttp = new XMLHttpRequest();
 
-      xhttp.open('GET', 'text.php', false);
+      xhttp.open('GET', /*'text.php'*/'js/phones.json', false);
       xhttp.send();
       var textNode = document.createTextNode(xhttp.responseText);
       var content = document.getElementById('content');
