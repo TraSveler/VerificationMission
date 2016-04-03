@@ -59,7 +59,7 @@ input:active{
 .header{
     position: fixed;
     width: 700px;
-    height: 15%;
+    height: 90px;
     z-index: 5;
     border-bottom: 1px solid lightgray;
     background-color: white;
@@ -71,18 +71,19 @@ input:active{
 }
 .container-content{
     position: fixed;
-    margin-top: 100px;
-    height: 550px;
+    margin-top: 90px;
+    height: 400px;
     width: 600px;
 }
 .text {
     position: absolute;
-    /*overflow: auto;*/
+    margin-top: 50px;
     z-index: 3;
     padding: 0 50px;
     width: 600px;
-    height: 550px;
+    height: 450px;
     text-align: justify;
+    overflow: auto;
 }
 
 /* Скролл (его части) */
@@ -91,7 +92,7 @@ input:active{
     right: -100px;
     top: 0;
     width: 19px;
-    height: 570px;
+    height: 580px;
     background-color: cyan;
     z-index: 101;
 }
@@ -99,7 +100,7 @@ input:active{
 .up {
     width: 19px;
     height: 22px;
-    /*position: absolute;*/
+    position: absolute;
     top: 0;
     right: 0;
     background-color: lavender;

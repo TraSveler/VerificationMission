@@ -21,7 +21,7 @@ function PopUpShow(){
 
       var xhttp = new XMLHttpRequest();
 
-      xhttp.open('GET', /*'text.php'*/'js/phones.json', false);
+      xhttp.open('GET', /*'text.php'*/'text.php', false);
       xhttp.send();
       var textNode = document.createTextNode(xhttp.responseText);
       var content = document.getElementById('text');
@@ -33,15 +33,14 @@ function PopUpShow(){
         // вывести результат
         content.appendChild(textNode);
       }
-      //---------
     };
 
-
-var sliderElem = document.getElementById('slider');
-var travelElem = sliderElem.children[0];
-var cont = document.getElementById('text');
-
-var isMousePress = false;
+//       Слайдер
+var sliderElem = document.getElementById('slider'),
+ travelElem = sliderElem.children[0],
+ cont = document.getElementById('text'),
+ pos = null,
+ isMousePress = false;
 
 travelElem.onmousedown = function(e){
     var travelCoords = getCoords(travelElem);
@@ -53,6 +52,15 @@ travelElem.onmousedown = function(e){
       if(!isMousePress){
         return;
       }
+  /*    
+  if (pos === null) {
+    pos = e.pageY;
+  } else if (pos !== e.pageY) {
+      move(e.pageY - pos);
+      moveContent(e.pageY - pos);
+      pos = e.pageY;
+    }
+  */  
 
         var newTop = e.pageY - shiftY - sliderCoords.top;
 
@@ -63,20 +71,10 @@ travelElem.onmousedown = function(e){
         if(newTop > bottomEdge){
             newTop = bottomEdge;
         }
-
         travelElem.style.top = newTop + 'px';
-
-        var delta = -15;
-        function moveBlock(delta){
-          var current = parseInt(cont.style.top);
-          newTop = current - delta;
-
-          cont.style.top = newTop + 'px';
-        }
     }
 
     document.onmouseup = function(){
-        // document.onmousemove = document.onmouseup = null;
         isMousePress = false;
     };
 
@@ -91,11 +89,18 @@ function getCoords(elem){
     };
 }
 
-/*
-var upBut = document.getElementById('up');
+/* Не рабочий функционал
+function move(delta) {
+      var old = parseInt(travelElem.style.top) || 0;
+          newS = old + delta;
 
-upBut.onmousedown = function(){
+      travelElem.style.top = newS + 'px';
+   }
 
-  upBut.onmouseup = cont.style.top = cont.style.top - 20+'px';
-  upBut.onmouseup = upBut.onmousedown = null;
-}*/
+function moveContent(delta) {
+      var old = parseInt(cont.style.marginTop) || 0,
+      newS = old - (delta * i);
+
+      cont.style.marginTop = newS + 'px';
+}
+*/
